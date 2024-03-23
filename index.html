@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello BB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+
+    <style> 
+      body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #ffc0cb;
+      }
+
+      .proposing-text{
+        font-family: "Dancing Script", cursive;
+        font-weight: bold;
+        font-size: 50px;
+        margin-bottom: 0px;
+        margin-top: 40px;
+      }
+
+      .proposing-picture{
+        height: 150px;
+        margin-top: 80px;
+        display: block;
+        margin-bottom: 40px;
+      }
+
+      .yes-no-buttons{
+        margin-bottom: 50px;
+      }
+
+      .yes-button{
+        border: none;
+        font-size: 18px;
+        padding: 10px 25px;
+        margin-left: 30px;
+        border-radius: 15px;
+        cursor: pointer;
+        background-color: #c0fff4;
+        transition: 0.3s;
+      }
+
+      .no-button{
+        border: none;
+        font-size: 18px;
+        padding: 10px 25px;
+        margin-left: 30px;
+        border-radius: 15px;
+        cursor: pointer;
+        background-color: #c0fff4;
+        transition: 0.3s;
+      }
+
+      .yes-button:hover{
+        opacity: 0.6;
+      }
+
+      .no-button:hover{
+        opacity: 0.6;
+      }
+
+      .hug-image{
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div style="display: flex; flex-direction: column; align-items: center;" class="proposing-text js-proposing-text">
+      <p style="margin-bottom: 10px; margin-top: 0px;">Hello Zi Yi BB</p>
+      <p style="margin-bottom: 0px;">Will you be my future wife?</p>
+    </div>
+    <img class="proposing-picture js-proposing-picture" src="images/proposing-picture.gif">
+    <div class="yes-no-buttons">
+      <button class="yes-button" onclick="yesButtonPressed()">Yes</button>
+      <button class="no-button" onclick="noButtonPressed()">No</button>
+    </div>
+
+    <script>
+      function yesButtonPressed() {
+        document.body.innerHTML = `
+          <p class="proposing-text">YAYY!!! Love you muaks</p>
+          <img class="hug-image" src="images/hug-picture.gif">
+        `;
+      }
+
+      function noButtonPressed() {
+        let currentYesButtonWidth = document.querySelector('.yes-button').getBoundingClientRect().width;
+        let currentYesButtonHeight = document.querySelector('.yes-button').getBoundingClientRect().height;
+        document.querySelector('.js-proposing-text')
+          .innerHTML = `
+            <p style="margin: 0px;">Why? :(</p>
+            <p style="margin-bottom: 0px; margin-top: 50px;">You don't want to be my future wife?</p>
+          `;
+        document.querySelector('.js-proposing-picture').src = 'images/crying-picture.gif';
+        document.querySelector('.yes-button').style.width = (currentYesButtonWidth * 2) + "px";
+        document.querySelector('.yes-button').style.height = (currentYesButtonHeight *2) + "px";
+      }
+    </script>
+  </body>
+</html>
